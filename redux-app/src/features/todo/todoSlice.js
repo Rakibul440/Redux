@@ -12,22 +12,22 @@ const initialState = {
 
 
 const todoSlice = createSlice({
-    name : todo,
+    name : "todo",
     initialState,
     reducers : {
         addTodo : (state,action)=>{
             const newTodo = {
                 id : nanoid(),
-                tast : action.payload ,
+                task : action.payload ,
                 isDone : false
             }
             state.todos.push(newTodo);
         },
         deleteTodo: (state,action)=>{
-            state.todos.filter(todo=> todo.id != action.payload )
+            state.todos =  state.todos.filter((todo)=> todo.id != action.payload )
         },
         markAsDone : (state,action)=>{
-            state.todos = state.todos.map((todo)=>{
+            state.todos = state.todos.map((todo)=> {
                 if(todo.id === action.payload){
                     todo.isDone = true;
                 }
